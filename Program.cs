@@ -96,16 +96,15 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// 7. CORS - Configuration spécifique
+// CORS - Configuration spécifique
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
+    options.AddPolicy("AllowProduction", policy =>
     {
         policy.WithOrigins(
                 "https://senbib.com",
                 "https://www.senbib.com",
-                "http://localhost:5500",  // Développement local
-                "http://127.0.0.1:5500"
+                "https://bawolshop-api.onrender.com"  // Soi-même
             )
             .AllowAnyMethod()
             .AllowAnyHeader()
@@ -174,7 +173,7 @@ if (!app.Environment.IsDevelopment())
 
 
 // ✅ MIDDLEWARE DANS LE BON ORDRE
-app.UseCors("AllowFrontend"); // ⭐ REMPLACER "AllowAll" par "AllowFrontend"
+app.UseCors("AllowProduction");
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -209,6 +208,7 @@ using (var scope = app.Services.CreateScope())
     }
 }
 app.Run();
+
 
 
 
