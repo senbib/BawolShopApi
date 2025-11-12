@@ -96,15 +96,21 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// 7. CORS
+// 7. CORS - Configuration spécifique
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .SetPreflightMaxAge(TimeSpan.FromHours(1));
+        policy.WithOrigins(
+                "https://senbib.com",
+                "https://www.senbib.com",
+                "http://localhost:5500",  // Développement local
+                "http://127.0.0.1:5500"
+            )
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials()
+            .SetPreflightMaxAge(TimeSpan.FromHours(1));
     });
 });
 
@@ -168,7 +174,7 @@ if (!app.Environment.IsDevelopment())
 
 
 // ✅ MIDDLEWARE DANS LE BON ORDRE
-app.UseCors("AllowAll");
+app.UseCors("AllowFrontend"); // ⭐ REMPLACER "AllowAll" par "AllowFrontend"
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -203,6 +209,7 @@ using (var scope = app.Services.CreateScope())
     }
 }
 app.Run();
+
 
 
 
