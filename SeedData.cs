@@ -59,7 +59,7 @@ namespace BawolShopApi.Data
                 Name = "iPhone 14", 
                 Description = "Dernier smartphone Apple avec écran Super Retina XDR", 
                 Price = 999.99m,
-                StockQuantity = 50,
+                Stock = 50,
                 ImageUrl = "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=300&fit=crop",
                 Category = "Smartphones",
                 CreatedAt = DateTime.UtcNow
@@ -69,7 +69,7 @@ namespace BawolShopApi.Data
                 Name = "Samsung Galaxy S23", 
                 Description = "Flagship Android avec appareil photo professionnel", 
                 Price = 849.99m,
-                StockQuantity = 30,
+                Stock = 30,
                 ImageUrl = "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
                 Category = "Smartphones",
                 CreatedAt = DateTime.UtcNow
@@ -79,7 +79,7 @@ namespace BawolShopApi.Data
                 Name = "MacBook Pro 16\"", 
                 Description = "Ordinateur portable professionnel avec puce M2", 
                 Price = 2499.99m,
-                StockQuantity = 15,
+                Stock = 15,
                 ImageUrl = "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop",
                 Category = "Laptops",
                 CreatedAt = DateTime.UtcNow
@@ -89,7 +89,7 @@ namespace BawolShopApi.Data
                 Name = "AirPods Pro", 
                 Description = "Écouteurs sans fil avec réduction de bruit active", 
                 Price = 249.99m,
-                StockQuantity = 100,
+                Stock = 100,
                 ImageUrl = "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&h=300&fit=crop",
                 Category = "Accessories",
                 CreatedAt = DateTime.UtcNow
@@ -108,4 +108,5 @@ namespace BawolShopApi.Data
         }
     }
 }
+
 
