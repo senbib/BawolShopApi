@@ -182,6 +182,27 @@ app.MapControllers();
 Console.WriteLine("✅ Application démarrée - SeedData désactivé");
 
 Console.WriteLine("✅ BawolShop API Démarrée avec Succès!");
+// ✅ APPLICATION DES MIGRATIONS
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    
+    Console.WriteLine("🗃 Application des migrations...");
+    
+    // Vérifier s'il y a des migrations en attente
+    var pendingMigrations = context.Database.GetPendingMigrations();
+    if (pendingMigrations.Any())
+    {
+        Console.WriteLine($"Migrations en attente: {string.Join(", ", pendingMigrations)}");
+        context.Database.Migrate();
+        Console.WriteLine("✅ Migrations appliquées avec succès");
+    }
+    else
+    {
+        Console.WriteLine("✅ Aucune migration en attente");
+    }
+}
 app.Run();
+
 
 
