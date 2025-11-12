@@ -181,10 +181,10 @@ app.UseAuthorization();
 app.MapControllers();
 
 // ✅ TEMPORAIRE : Désactiver SeedData pour tester
-// using (var scope = app.Services.CreateScope())
-// {
-//     await SeedData.Initialize(scope.ServiceProvider);
-// }
+ using (var scope = app.Services.CreateScope())
+ {
+     await SeedData.Initialize(scope.ServiceProvider);
+}
 Console.WriteLine("✅ Application démarrée - SeedData désactivé");
 
 Console.WriteLine("✅ BawolShop API Démarrée avec Succès!");
@@ -209,6 +209,7 @@ using (var scope = app.Services.CreateScope())
     }
 }
 app.Run();
+
 
 
 
