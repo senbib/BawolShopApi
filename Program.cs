@@ -179,12 +179,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// ✅ TEMPORAIRE : Désactiver SeedData pour tester
- using (var scope = app.Services.CreateScope())
- {
-     await SeedData.Initialize(scope.ServiceProvider);
-}
-Console.WriteLine("✅ Application démarrée - SeedData désactivé");
+
+
 
 Console.WriteLine("✅ BawolShop API Démarrée avec Succès!");
 // ✅ APPLICATION DES MIGRATIONS
@@ -207,7 +203,13 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine("✅ Aucune migration en attente");
     }
 }
+// ✅ TEMPORAIRE : Désactiver SeedData pour tester
+ using (var scope = app.Services.CreateScope())
+ {
+     await SeedData.Initialize(scope.ServiceProvider);
+}
 app.Run();
+
 
 
 
