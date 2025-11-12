@@ -137,11 +137,16 @@ app.UseHttpsRedirection();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-// ✅ SERVIR LE DOSSIER UPLOADS
+// Créer le dossier uploads s'il n'existe pas
+var uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+if (!Directory.Exists(uploadsPath))
+{
+    Directory.CreateDirectory(uploadsPath);
+}
+
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")),
+    FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(uploadsPath),
     RequestPath = "/uploads"
 });
 
@@ -177,3 +182,4 @@ using (var scope = app.Services.CreateScope())
 
 Console.WriteLine("✅ BawolShop API Démarrée avec Succès!");
 app.Run();
+
